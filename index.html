@@ -19,7 +19,7 @@
             transition: background-color 0.3s ease;
         }
         .btn-primary:hover {
-            background-color:#2bbb47;
+            background-color: #2bbb47;
         }
         .form-section, .quote-section {
             margin-top: 30px;
@@ -37,18 +37,18 @@
         }
         .quote-section p {
             font-size: 1.2em;
-            color:#2bbb47;
+            color: #2bbb47;
         }
         .section-heading {
             font-size: 2em;
-            color:#2bbb47;
+            color: #2bbb47;
             font-weight: bold;
         }
         label {
             color: #333;
         }
         .bg-header {
-            background-color:#2bbb47;
+            background-color: #2bbb47;
             padding: 30px 0;
         }
         .bg-header h1 {
@@ -75,7 +75,7 @@
 <section class="container my-5">
     <h2 class="text-center section-heading">¿A quién está dirigido?</h2>
     <p class="text-center">
-        Esta oferta es ideal para comerciantes, monotributistas, y personas con sus propios negocios
+        Esta oferta es ideal para comerciantes, monotributistas y personas con sus propios negocios
         que tienen ingresos diarios y pueden realizar pagos diarios.
     </p>
 </section>
@@ -104,42 +104,23 @@
     </form>
 </section>
 
-<!-- Formulario Único de Preaprobación y Solicitud -->
-<section class="container form-section my-5">
-    <h2 class="text-center section-heading">Solicitud de Préstamo</h2>
-    <form id="loanForm" action="https://formspree.io/f/mzzbgype" method="POST">
-
-        <!-- Datos Personales -->
+<!-- Formulario de Preaprobación y Solicitud -->
+<section class="container form-section">
+    <h2 class="text-center section-heading">Solicita tu Préstamo</h2>
+    <form action="https://formspree.io/f/mzzbgype" method="POST">
         <div class="mb-3">
-            <label for="nombre" class="form-label">Nombre Completo</label>
-            <input type="text" class="form-control" id="nombre" name="nombre" required>
+            <label for="email" class="form-label">Correo electrónico:</label>
+            <input type="email" class="form-control" id="email" name="email" required>
         </div>
         <div class="mb-3">
-            <label for="telefono" class="form-label">Teléfono</label>
-            <input type="tel" class="form-control" id="telefono" name="telefono" required>
+            <label for="subject" class="form-label">Asunto:</label>
+            <input type="text" class="form-control" id="subject" name="subject" value="Solicitud de Préstamo con DNI" required>
         </div>
         <div class="mb-3">
-            <label for="direccion" class="form-label">Dirección Actual</label>
-            <input type="text" class="form-control" id="direccion" name="direccion" required>
+            <label for="message" class="form-label">Mensaje:</label>
+            <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
         </div>
-
-        <!-- Referencia Personal -->
-        <h3 class="text-center mt-4">Referencia Personal</h3>
-        <div class="mb-3">
-            <label for="nombreReferencia" class="form-label">Nombre Completo de la Referencia</label>
-            <input type="text" class="form-control" id="nombreReferencia" name="nombreReferencia" required>
-        </div>
-        <div class="mb-3">
-            <label for="telefonoReferencia" class="form-label">Teléfono de la Referencia</label>
-            <input type="tel" class="form-control" id="telefonoReferencia" name="telefonoReferencia" required>
-        </div>
-        <div class="mb-3">
-            <label for="dniReferencia" class="form-label">Número de DNI de la Referencia</label>
-            <input type="text" class="form-control" id="dniReferencia" name="dniReferencia" required>
-        </div>
-
-        <!-- Botón de Envío -->
-        <button type="submit" class="btn btn-primary w-100">Enviar Solicitud</button>
+        <button type="submit" class="btn btn-primary">Enviar</button>
     </form>
 </section>
 
