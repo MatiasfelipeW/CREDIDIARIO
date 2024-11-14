@@ -121,7 +121,8 @@
 
 <!-- Formulario Único de Preaprobación y Solicitud -->
 <section class="container form-section my-5">
-    <h2 class="text-center section-heading">Solicitud de Préstamo</h2>        
+    <h2 class="text-center section-heading">Solicitud de Préstamo</h2>
+    <form id="loanForm" action="https://formspree.io/f/mzzbgype" method="POST">
         <!-- Subir DNI -->
         <div class="mb-3">
             <label for="dniFoto" class="form-label">Sube una foto de tu DNI con firma digital:</label>
@@ -157,10 +158,44 @@
             <input type="text" class="form-control" id="dniReferencia" name="dniReferencia" required>
         </div>
 
+        <!-- Campo oculto para el enlace de la imagen -->
+        <input type="hidden" name="dniImageUrl" id="dniImageUrl">
+
         <!-- Botón de Envío -->
         <button type="submit" class="btn btn-primary w-100">Enviar Solicitud</button>
     </form>
 </section>
+
+<script>
+    const form = document.getElementById('loanForm');
+    const dniFotoInput = document.getElementById('dniFoto');
+    const dniImageUrlInput = document.getElementById('dniImageUrl');
+
+    form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        // Subir la imagen a Cloudinary
+        const file = dniFotoInput.files[0];
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('upload_preset', 'unsigned_upload'); // Configuración de Cloudinary
+
+        const response = await fetch('https://api.cloudinary.com/v1_1/dwhshfzym/image/upload', {
+            method: 'POST',
+            body: formData
+        });
+
+        const data = await response.json();
+        const imageUrl = data.secure_url;
+
+        // Asignar el enlace de la imagen al campo oculto
+        dniImageUrlInput.value = imageUrl;
+
+        // Enviar el formulario a Formspree
+        form.submit();
+    });
+</script>
+
 
 <script>
     // Calcular el pago total y la cuota diaria
