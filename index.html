@@ -1,128 +1,7 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PRESTAMOS CON DNI</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        /* Estilos personalizados */
-        .header-title {
-            text-align: center;
-            color: #2bbb47; /* Verde relacionado con el dinero */
-            margin-top: 20px;
-        }
-
-        .btn-primary {
-            background-color: #2bbb47; /* Color dorado para botones */
-            border: none;
-            color: #000;
-            transition: background-color 0.3s ease;
-        }
-
-        .btn-primary:hover {
-            background-color:#2bbb47; /* Naranja para hover */
-        }
-
-        .form-section, .quote-section {
-            margin-top: 30px;
-            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1); /* Sombra para profundidad */
-            border-radius: 10px;
-            padding: 20px;
-            background-color: #f4f4f4;
-        }
-
-        .form-control, .form-range {
-            border-radius: 5px;
-        }
-
-        .quote-section input[type="text"] {
-            font-weight: bold;
-            color: #2bbb47;
-        }
-
-        .quote-section p {
-            font-size: 1.2em;
-            color:#2bbb47;
-        }
-
-        .section-heading {
-            font-size: 2em;
-            color:#2bbb47;
-            font-weight: bold;
-        }
-
-        /* Colores para los formularios */
-        label {
-            color: #333;
-        }
-
-        .bg-header {
-            background-color:#2bbb47; /* Fondo verde */
-            padding: 30px 0;
-        }
-
-        .bg-header h1 {
-            color: white;
-            font-weight: bold;
-        }
-
-        /* Estilo para los campos de formulario */
-        .form-control {
-            border: 2px solid #2bbb47;
-        }
-
-        .form-control:focus {
-            border-color: #2bbb47; /* Bordes dorados al seleccionar */
-            box-shadow: 0 0 5px rgba(255, 215, 0, 0.6);
-        }
-
-    </style>
-</head>
-<body>
-
-<!-- Encabezado -->
-<header class="bg-header">
-    <h1 class="header-title">PRESTAMOS CON DNI</h1>
-</header>
-
-<!-- Público Objetivo -->
-<section class="container my-5">
-    <h2 class="text-center section-heading">¿A quién está dirigido?</h2>
-    <p class="text-center">
-        Esta oferta es ideal para comerciantes, monotributistas, y personas con sus propios negocios
-        que tienen ingresos diarios y pueden realizar pagos diarios.
-    </p>
-</section>
-
-<!-- Cotizador -->
-<section class="quote-section container">
-    <h2 class="text-center section-heading">Calcula tu Préstamo</h2>
-    <form>
-        <div class="mb-3">
-            <label for="monto" class="form-label">Selecciona el monto (AR$):</label>
-            <input type="range" class="form-range" min="10000" max="150000" step="1000" id="monto" onchange="calculateTotal()">
-            <p>Monto seleccionado: <span id="selectedAmount">10000</span> AR$</p>
-        </div>
-        <div class="mb-3">
-            <label for="dias" class="form-label">Días del préstamo:</label>
-            <input type="text" class="form-control" id="dias" value="27" disabled>
-        </div>
-        <div class="mb-3">
-            <label for="cuotaDiaria" class="form-label">Pago diario:</label>
-            <input type="text" class="form-control" id="cuotaDiaria" readonly>
-        </div>
-        <div class="mb-3">
-            <label for="totalPagar" class="form-label">Total a pagar:</label>
-            <input type="text" class="form-control" id="totalPagar" readonly>
-        </div>
-    </form>
-</section>
-
 <!-- Formulario Único de Preaprobación y Solicitud -->
 <section class="container form-section my-5">
     <h2 class="text-center section-heading">Solicitud de Préstamo</h2>
-    <form id="loanForm" action="https://formspree.io/f/mzzbgype" method="POST">
+    <form id="loanForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
         <!-- Subir DNI -->
         <div class="mb-3">
             <label for="dniFoto" class="form-label">Sube una foto de tu DNI con firma digital:</label>
@@ -178,7 +57,7 @@
         const file = dniFotoInput.files[0];
         const formData = new FormData();
         formData.append('file', file);
-        formData.append('upload_preset', 'unsigned_upload'); // Configuración de Cloudinary
+        formData.append('upload_preset', 'your_upload_preset'); // Configuración de Cloudinary
 
         const response = await fetch('https://api.cloudinary.com/v1_1/dwhshfzym/image/upload', {
             method: 'POST',
@@ -196,24 +75,3 @@
     });
 </script>
 
-
-<script>
-    // Calcular el pago total y la cuota diaria
-    function calculateTotal() {
-        let amount = document.getElementById('monto').value;
-        document.getElementById('selectedAmount').innerText = amount;
-        
-        // Calcula el pago diario y total a pagar (35% del monto solicitado)
-        let total = amount * 1.35;
-        let dailyPayment = total / 27;
-
-        document.getElementById('totalPagar').value = `AR$ ${total.toFixed(2)}`;
-        document.getElementById('cuotaDiaria').value = `AR$ ${dailyPayment.toFixed(2)}`;
-    }
-</script>
-
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
-
-</body>
-</html>
