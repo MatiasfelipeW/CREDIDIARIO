@@ -136,25 +136,6 @@ body {
     background: #1da851;
 }
 
-/* Estilos para el botón personalizado */
-.custom-button {
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 14px;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.5s;
-    animation: colorChange 6.9s infinite; /* Animación de cambio de color */
-  }
-  
-  /* Animación de cambio de color */
-  @keyframes colorChange {
-    0% { background-color: red; }
-    33% { background-color: green; }
-    66% { background-color: rgb(11, 93, 121); }
-    100% { background-color: red; }
-  }
 
   /* Estilo para la imagen QR */
 .qr-image {
@@ -166,3 +147,26 @@ body {
     margin-left: auto;
     margin-right: auto; /* Centra la imagen horizontalmente */
 }
+
+/* Main */
+.main {
+    flex: 1; /* Permite que el contenido principal ocupe el espacio restante entre header y footer */
+    max-width: 800px; /* Limita el ancho máximo */
+    width: 90%; /* Proporción para mantener un margen en pantallas más pequeñas */
+    margin: 20px auto; /* Centra horizontalmente con espacio vertical */
+    padding: 15px; /* Espacio interno para evitar que el contenido esté muy pegado */
+    background: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    text-align: left;
+}
+
+/* Mejoras para dispositivos móviles */
+@media (max-width: 768px) {
+    .main {
+        width: 95%; /* Más espacio lateral en pantallas pequeñas */
+        margin: 15px auto; /* Ajusta el margen */
+        padding: 20px; /* Más espacio interno */
+    }
+}
+
