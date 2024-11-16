@@ -1,9 +1,8 @@
 /* Reset y configuración base */
 
-/* Reset y configuración base */
-body {
 
-}
+
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -66,6 +65,22 @@ body {
     border: 1px solid #ccc;
     border-radius: 5px;
 }
+
+.cotizador-section {
+    animation: colorAnimation 2s infinite alternate;
+  }
+  
+  @keyframes colorAnimation {
+    0% {
+      color: black;
+    }
+    100% {
+      color: red;
+    }
+  }
+  
+
+
 
 /* Formulario */
 .form-section form label {
