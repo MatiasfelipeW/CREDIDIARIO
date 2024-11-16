@@ -1,146 +1,84 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PRESTAMOS CON DNI</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        /* Estilos personalizados */
-        .header-title {
-            text-align: center;
-            color: #2bbb47;
-            margin-top: 20px;
-        }
-        .btn-primary {
-            background-color: #2bbb47;
-            border: none;
-            color: #000;
-            transition: background-color 0.3s ease;
-        }
-        .btn-primary:hover {
-            background-color: #2bbb47;
-        }
-        .form-section, .quote-section {
-            margin-top: 30px;
-            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            padding: 20px;
-            background-color: #f4f4f4;
-        }
-        .form-control, .form-range {
-            border-radius: 5px;
-        }
-        .quote-section input[type="text"] {
-            font-weight: bold;
-            color: #2bbb47;
-        }
-        .quote-section p {
-            font-size: 1.2em;
-            color: #2bbb47;
-        }
-        .section-heading {
-            font-size: 2em;
-            color: #2bbb47;
-            font-weight: bold;
-        }
-        label {
-            color: #333;
-        }
-        .bg-header {
-            background-color: #2bbb47;
-            padding: 30px 0;
-        }
-        .bg-header h1 {
-            color: white;
-            font-weight: bold;
-        }
-        .form-control {
-            border: 2px solid #2bbb47;
-        }
-        .form-control:focus {
-            border-color: #2bbb47;
-            box-shadow: 0 0 5px rgba(255, 215, 0, 0.6);
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Créditos Responsables</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+  <!-- Header -->
+  <header class="header">
+    <h1>Créditos Responsables</h1>
+    <p>Financiación pensada para negocios y monotributistas.</p>
+  </header>
 
-<!-- Encabezado -->
-<header class="bg-header">
-    <h1 class="header-title">PRESTAMOS CON DNI</h1>
-</header>
+  <!-- Información y Cotizador -->
+  <main class="main">
+    <section class="info-section">
+      <h2>¿Cómo funcionan nuestros créditos?</h2>
+      <p>
+        Ofrecemos créditos desde <strong>10,000 ARS</strong> hasta <strong>150,000 ARS</strong> con un plazo de pago diario por 27 días. 
+        Los intereses son del <strong>35%</strong>, diseñados para personas con negocio propio o monotributistas con capacidad de pago.
+      </p>
+    </section>
 
-<!-- Público Objetivo -->
-<section class="container my-5">
-    <h2 class="text-center section-heading">¿A quién está dirigido?</h2>
-    <p class="text-center">
-        Esta oferta es ideal para comerciantes, monotributistas y personas con sus propios negocios
-        que tienen ingresos diarios y pueden realizar pagos diarios.
-    </p>
-</section>
-
-<!-- Cotizador -->
-<section class="quote-section container">
-    <h2 class="text-center section-heading">Calcula tu Préstamo</h2>
-    <form>
-        <div class="mb-3">
-            <label for="monto" class="form-label">Selecciona el monto (AR$):</label>
-            <input type="range" class="form-range" min="10000" max="150000" step="1000" id="monto" onchange="calculateTotal()">
-            <p>Monto seleccionado: <span id="selectedAmount">10000</span> AR$</p>
-        </div>
-        <div class="mb-3">
-            <label for="dias" class="form-label">Días del préstamo:</label>
-            <input type="text" class="form-control" id="dias" value="27" disabled>
-        </div>
-        <div class="mb-3">
-            <label for="cuotaDiaria" class="form-label">Pago diario:</label>
-            <input type="text" class="form-control" id="cuotaDiaria" readonly>
-        </div>
-        <div class="mb-3">
-            <label for="totalPagar" class="form-label">Total a pagar:</label>
-            <input type="text" class="form-control" id="totalPagar" readonly>
-        </div>
-    </form>
-</section>
-
-<!-- Formulario de Preaprobación y Solicitud -->
-<section class="container form-section">
-    <h2 class="text-center section-heading">Solicita tu Préstamo</h2>
-    <form action="https://formspree.io/f/mzzbgype" method="POST">
-        <div class="mb-3">
-            <label for="email" class="form-label">Correo electrónico:</label>
-            <input type="email" class="form-control" id="email" name="email" required>
-        </div>
-        <div class="mb-3">
-            <label for="subject" class="form-label">Asunto:</label>
-            <input type="text" class="form-control" id="subject" name="subject" value="Solicitud de Préstamo con DNI" required>
-        </div>
-        <div class="mb-3">
-            <label for="message" class="form-label">Mensaje:</label>
-            <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">Enviar</button>
-    </form>
-</section>
-
-<script>
-    // Calcular el pago total y la cuota diaria
-    function calculateTotal() {
-        let amount = document.getElementById('monto').value;
-        document.getElementById('selectedAmount').innerText = amount;
+    <!-- Cotizador -->
+    <section class="cotizador-section">
+      <h2>Calcula tu crédito</h2>
+      <div class="cotizador">
+        <label for="capital">Monto del crédito (ARS):</label>
+        <input type="number" id="capital" min="10000" max="150000" step="1000" value="10000" oninput="calcularCredito()">
         
-        // Calcula el pago diario y total a pagar (35% del monto solicitado)
-        let total = amount * 1.35;
-        let dailyPayment = total / 27;
+        <p><strong>Pago total:</strong> <span id="totalPago">13,500 ARS</span></p>
+        <p><strong>Pago diario:</strong> <span id="pagoDiario">500 ARS</span></p>
+      </div>
+    </section>
 
-        document.getElementById('totalPagar').value = `AR$ ${total.toFixed(2)}`;
-        document.getElementById('cuotaDiaria').value = `AR$ ${dailyPayment.toFixed(2)}`;
-    }
-</script>
+    <!-- Formulario -->
+    <section class="form-section">
+      <h2>Solicita tu crédito</h2>
+      <form action="https://formspree.io/f/xpwzrnan" method="POST">
+        <label for="nombre">Nombre completo:</label>
+        <input type="text" id="nombre" name="nombre" required placeholder="Ingresa tu nombre completo">
 
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+        <label for="telefono">Teléfono actualizado:</label>
+        <input type="tel" id="telefono" name="telefono" required placeholder="Ingresa tu teléfono">
 
+        <label for="dni">DNI:</label>
+        <input type="text" id="dni" name="dni" required placeholder="Ingresa tu DNI">
+
+        <label for="direccion">Dirección:</label>
+        <input type="text" id="direccion" name="direccion" required placeholder="Ingresa tu dirección">
+
+        <label for="referencia">Referencia personal:</label>
+        <input type="text" id="referencia" name="referencia" required placeholder="Nombre de la referencia">
+
+        <label for="telefono_referencia">Teléfono de referencia:</label>
+        <input type="tel" id="telefono_referencia" name="telefono_referencia" required placeholder="Teléfono de la referencia">
+
+        <label for="direccion_referencia">Dirección de referencia:</label>
+        <input type="text" id="direccion_referencia" name="direccion_referencia" required placeholder="Dirección de la referencia">
+
+        <label for="observaciones">Observaciones:</label>
+        <textarea id="observaciones" name="observaciones" placeholder="Escribe tus requerimientos o comentarios adicionales"></textarea>
+
+        <button type="submit">Enviar solicitud</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2024 Créditos Responsables - Todos los derechos reservados.</p>
+  </footer>
+
+  <!-- Botón de WhatsApp -->
+  <a href="https://wa.me/5493518159836" class="whatsapp-link">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <script src="script.js"></script>
 </body>
 </html>
