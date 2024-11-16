@@ -1,84 +1,109 @@
-/* styles.css */
+/* Reset y configuración base */
+
+/* Reset y configuración base */
+body {
+
+}
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     line-height: 1.6;
-  }
-  
-  .header {
-    background: #0056b3;
+    background-color: #e4ddc1;
+    display: flex;
+    flex-direction: column; /* Asegura que header, main y footer estén en columnas */
+    min-height: 100vh; /* Ocupa toda la altura de la pantalla */
+}
+
+/* Header */
+.header {
+    background: #22791a;
     color: white;
     text-align: center;
     padding: 20px;
-  }
-  
-  .header h1 {
+}
+
+.header h1 {
     margin: 0;
-  }
-  
-  .main {
+}
+
+/* Main */
+.main {
+    flex: 1; /* Permite que el contenido principal ocupe el espacio restante entre header y footer */
+    max-width: 800px;
+    width: 100%;
+    margin: 20px auto; /* Centra horizontalmente */
     padding: 20px;
-  }
-  
-  .info-section, .cotizador-section, .form-section {
+    background: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    text-align: left;
+}
+
+/* Secciones de contenido */
+.info-section, 
+.cotizador-section, 
+.form-section {
     margin-bottom: 20px;
-  }
-  
-  .cotizador {
+}
+
+.cotizador {
     background: #f9f9f9;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  .cotizador label {
+}
+
+.cotizador label {
     display: block;
     margin-bottom: 10px;
-  }
-  
-  .cotizador input {
+}
+
+.cotizador input {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-  }
-  
-  .form-section form label {
+}
+
+/* Formulario */
+.form-section form label {
     display: block;
     margin: 10px 0 5px;
-  }
-  
-  .form-section form input,
-  .form-section form textarea,
-  .form-section form button {
+}
+
+.form-section form input,
+.form-section form textarea,
+.form-section form button {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 5px;
-  }
-  
-  .form-section form button {
-    background: #0056b3;
+}
+
+.form-section form button {
+    background:  #22791a;
     color: white;
     border: none;
     cursor: pointer;
-  }
-  
-  .form-section form button:hover {
+}
+
+.form-section form button:hover {
     background: #003d80;
-  }
-  
-  .footer {
+}
+
+/* Footer */
+.footer {
     text-align: center;
     padding: 10px;
     background: #333;
     color: white;
-  }
-  
-  .whatsapp-link {
+}
+
+/* Botón de WhatsApp */
+.whatsapp-link {
     position: fixed;
     bottom: 20px;
     right: 20px;
@@ -90,9 +115,8 @@ body {
     font-size: 24px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
     text-decoration: none;
-  }
-  
-  .whatsapp-link:hover {
+}
+
+.whatsapp-link:hover {
     background: #1da851;
-  }
-  
+}
