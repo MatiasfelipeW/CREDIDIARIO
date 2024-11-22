@@ -1,46 +1,71 @@
 /* Reset y configuración base */
+// <uniquifier>: Use a unique and descriptive class name
+// <weight>: Use a value from 300 to 800
+
+.anton-regular {
+    font-family: "Anton", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  // <uniquifier>: Use a unique and descriptive class name
+// <weight>: Use a value from 300 to 800
+
+.funnel-display-<uniquifier> {
+  font-family: "Funnel Display", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+}
 
 
 
 
 body {
-    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     line-height: 1.6;
-    background-color: #ffffff;
+    background-color: #edcf8d;
     display: flex;
     flex-direction: column; /* Asegura que header, main y footer estén en columnas */
-    min-height: 100vh; /* Ocupa toda la altura de la pantalla */
+    min-height: 10vh; /* Ocupa toda la altura de la pantalla */
 }
 
-/* Header */
+/* Asegúrate de aplicar estilos al header */
 .header {
-    background: #22791a;
-    color: white;
+    position: relative;
     text-align: center;
-    padding: 20px;
-}
-
-.header h1 {
+    overflow: hidden; /* Oculta cualquier parte de la imagen fuera del contenedor */
+  }
+  
+  .text-container {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -20%);
+    color: white;
+    z-index: 2;
+  }
+  
+  .header h1 {
+    font-size: 2rem;
+    font-weight: bold;
     margin: 0;
-}
-
-/* Imagen publicitaria en el header */
-.promo-image {
-    display: block;
-    max-width: 60%;
-    height: auto;
-    margin: 20px auto; /* Centra horizontalmente */
-    border-radius: 10px; /* Bordes redondeados */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para destacar */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Efecto al pasar el cursor */
-}
-
-.promo-image:hover {
-    transform: scale(1.05); /* Efecto de zoom */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); /* Más sombra al pasar el cursor */
-}
+  }
+  
+  .header p {
+    font-size: 1.2rem;
+    margin: 20px 0;
+  }
+  
+  /* Estiliza la imagen */
+  .promo-image {
+    width: 95%;
+    height: auto; /* Mantén las proporciones de la imagen */
+    max-height: 500px; /* Limita la altura máxima */
+    object-fit: cover; /* Hace que la imagen se ajuste y recorte si es necesario */
+  }
+  
 
 
 /* Main */
@@ -50,8 +75,8 @@ body {
     width: 100%;
     margin: 20px auto; /* Centra horizontalmente */
     padding: 1px;
-    background: #ffffff;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background: #e1d28f;
+    box-shadow: 0 4px 6px rgba(236, 197, 160, 0.1);
     border-radius: 10px;
     text-align: left;
 }
@@ -137,21 +162,33 @@ body {
 /* Botón de WhatsApp */
 .whatsapp-link {
     position: fixed;
-    bottom: 30px;
+    bottom: 20px; /* Ajustado para que no quede muy alto en dispositivos móviles */
     right: 20px;
     background: #25D366;
     color: white;
-    padding: 15px 20px;
+    width: 60px; /* Tamaño consistente */
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 50%;
-    text-align: center;
-    font-size: 24px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    font-size: 30px; /* Tamaño del ícono */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra más notable */
     text-decoration: none;
+    z-index: 1000; /* Asegura que esté sobre otros elementos */
+    transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .whatsapp-link:hover {
     background: #1da851;
+    transform: scale(1.1); /* Efecto de zoom al pasar el cursor */
 }
+
+/* Asegura un comportamiento adecuado en pantallas táctiles */
+.whatsapp-link:active {
+    transform: scale(1); /* Reduce el zoom al hacer clic */
+}
+
 
 
   /* Estilo para la imagen QR */
